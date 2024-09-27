@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fibonacci Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      #result {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Fibonacci Generator</h1>
+      <p>Enter the number of Fibonacci terms you want:</p>
+      <input type="number" id="numberInput" placeholder="Enter a number" />
+      <button onclick="generateFibonacci()">Generate Fibonacci</button>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function generateFibonacci() {
+        let n = document.getElementById("numberInput").value;
+        if (n <= 0) {
+          document.getElementById("result").innerHTML =
+            "Please enter a valid number greater than 0.";
+          return;
+        }
+
+        let fibSequence = [0, 1];
+        for (let i = 2; i < n; i++) {
+          fibSequence.push(fibSequence[i - 1] + fibSequence[i - 2]);
+        }
+
+        // Display the result
+        document.getElementById("result").innerHTML =
+          "Fibonacci Sequence: " + fibSequence.slice(0, n).join(", ");
+      }
+    </script>
+  </body>
+</html>
